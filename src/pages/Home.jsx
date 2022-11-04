@@ -49,63 +49,74 @@ export default function Home() {
   return (
     <main>
       <h1>{content.welcome}</h1>
-      <label htmlFor="oneWauFlight">one-way-flight</label>
-      <input
-        onChange={handleRadio}
-        id="oneWayFlight"
-        value=""
-        name="returnFlight"
-        className={`searchbar ${theme}`}
-        type="radio"
-        checked={selected}
-      />
-      <label htmlFor="returnFlight">return-flight</label>
-      <input
-        onChange={handleRadio}
-        id="returnFlight"
-        value="returnFlight"
-        name="returnFlight"
-        className={`searchbar ${theme}`}
-        type="radio"
-      />
+
+      <div className="radio-buttons">
+        <label htmlFor="oneWauFlight">One way</label>
+        <input
+          onChange={handleRadio}
+          id="oneWayFlight"
+          value=""
+          name="returnFlight"
+          className={` ${theme}`}
+          type="radio"
+          checked={selected}
+        />
+
+        <label htmlFor="returnFlight">Roundtrip</label>
+        <input
+          onChange={handleRadio}
+          id="returnFlight"
+          value="returnFlight"
+          name="returnFlight"
+          className={` ${theme}`}
+          type="radio"
+        />
+      </div>
 
       <div className={`searchbar ${theme}`}>
         <input
+          className="input-text"
           onChange={handleFormDate}
           name="from"
           type="text"
           placeholder={content.from}
         />
         <input
+          className="input-text"
           onChange={handleFormDate}
           name="to"
           type="text"
           placeholder={content.to}
         />
-        <label htmlFor="departureDate">{content.departure} </label>
-        <input
-          id="departureDate"
-          onChange={handleFormDate}
-          name="departDate"
-          type="date"
-        />
+        <div className="input-label">
+          <label htmlFor="departureDate">{content.departure}</label>
+          <input
+            className="input-text"
+            id="departureDate"
+            onChange={handleFormDate}
+            name="departDate"
+            type="date"
+          />
+        </div>
 
         {!selected ? (
-          <>
+          <div className="input-label">
             <label htmlFor="returnDate">{content.returnDate} </label>
             <input
+              className="input-text"
               onChange={handleFormDate}
               id="returnDate"
               name="returnDate"
               type="date"
               placeholder={content.return}
             />
-          </>
+          </div>
         ) : (
           ""
         )}
 
         <input
+          className="input-text"
           onChange={handleFormDate}
           name="travellers"
           type="number"
