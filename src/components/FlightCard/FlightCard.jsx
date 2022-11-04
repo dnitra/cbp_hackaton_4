@@ -1,6 +1,7 @@
 import React from "react";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
+import "./FlightCard.scss";
 
 export default function FlightCard({
   flight,
@@ -21,6 +22,7 @@ export default function FlightCard({
         {flight.airlines.map((airlineCode) => {
           return (
             <img
+              className="flight__details-logo"
               src={`https://images.kiwi.com/airlines/64/${airlineCode}.png`}
               alt="airline logo"
             />

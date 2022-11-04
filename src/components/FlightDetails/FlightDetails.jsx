@@ -51,11 +51,6 @@ export default function FlightDetails(props) {
     setFlights(data.data);
   };
 
-  const loadCarriers = async () => {
-    const response = await fetch();
-    const data = await response.json();
-  };
-
   useEffect(() => {
     loadCityCodeFrom();
     loadCityCodeTo();
