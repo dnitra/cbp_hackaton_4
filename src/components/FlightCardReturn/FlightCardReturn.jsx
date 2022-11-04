@@ -2,7 +2,7 @@ import React from "react";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import { Link } from "react-router-dom";
-import "./FlightCard.scss";
+// import "./FlightCard.scss";
 
 export default function FlightCard({
   flight,
@@ -15,7 +15,7 @@ export default function FlightCard({
   const content = useContent();
   const { theme } = useTheme();
   return (
-    <div className="flight__first flight" key={flight.id}>
+    <div className="flight__first flight">
       <div className="flight__details">
         <div className="flight__details-date">
           {content.flightDate}

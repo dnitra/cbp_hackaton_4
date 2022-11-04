@@ -3,6 +3,7 @@ import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import { DateTime } from "luxon";
 import FlightCard from "../FlightCard/FlightCard";
+import FlightCardReturn from "../FlightCardReturn/FlightCardReturn";
 import { Link } from "react-router-dom";
 
 export default function FlightDetails(props) {
@@ -118,6 +119,35 @@ export default function FlightDetails(props) {
                   date={date}
                   setFlightId={setFlightId}
                   numPerson={numPerson}
+                  key={flight.id}
+                />
+              );
+            })
+          : null}
+      </div>
+
+      <div>
+        {returnFlights
+          ? returnFlights.map((returnFlight) => {
+              const departureTimeReturn = DateTime.fromMillis(
+                returnFlight.dTime * 1000
+              ).toFormat("hh:mm");
+              const arrivalTimeReturn = DateTime.fromMillis(
+                returnFlight.aTime * 1000
+              ).toFormat("hh:mm");
+              const dateReturn = DateTime.fromMillis(
+                returnFlight.dTime * 1000
+              ).toFormat("dd/MM");
+
+              return (
+                <FlightCardReturn
+                  flight={returnFlight}
+                  arrivalTime={arrivalTimeReturn}
+                  departureTime={departureTimeReturn}
+                  date={dateReturn}
+                  setFlightId={setFlightId}
+                  numPerson={numPerson}
+                  key={returnFlight.id}
                 />
               );
             })
