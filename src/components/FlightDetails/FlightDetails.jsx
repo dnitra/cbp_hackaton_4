@@ -80,7 +80,7 @@ export default function FlightDetails(props) {
   return (
     <>
       <div>
-        <button onClick={goLoadData}>Search</button>
+        <button className = "button-13" onClick={goLoadData}>Search</button>
       </div>
 
       <div>
