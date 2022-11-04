@@ -1,4 +1,4 @@
-export default function Errors () {
+export  function errors () {
     
     return {
       

@@ -4,35 +4,39 @@ import { ContentContext } from "./ContentContext"
 
 import { useState } from "react"
 
-import { mainContent as enMainContent } from "../content/en/mainContent"
-import { mainContent as csMainContent } from "../content/cs/mainContent"
+import { mainContent } from "../content/en/mainContent"
+import { errors } from "../content/en/errors"
+
+import { hlavniObsah } from "../content/cs/hlavniObsah"
 
 
 
 
 export function ContextsProvider({ children }) {
 
+    const enContent = mainContent()
+
+    const csContent = hlavniObsah()
 
     const allContents = {
         "en": {
-            "mainContent":enMainContent
+            ...enContent 
         },
         "cs": {
-            "mainContent":csMainContent
+            ...csContent
         }
     }
-
-
+    console.log(enContent)
     const [lang,setLang] = useState("en")
     const [theme, setTheme] = useState("light-theme")
-    const [content, setContent] = useState(allContents[lang]["mainContent"])
+    const [content, setContent] = useState(allContents[lang])
 
     
 
 
     const changeLang = (chosenLanguage) => {
         setLang(chosenLanguage)
-        setContent(allContents[lang]["mainContent"])
+        setContent(allContents[lang])
     }
 
     const changeTheme = (chosenTheme) => {

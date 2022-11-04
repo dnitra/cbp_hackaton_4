@@ -1,8 +1,7 @@
-export function mainContent(){
+export  function hlavniObsah(){
 
     return {
         "welcome":
             "Vitejte na nasich skvelych strankach!"
-
     }
 }

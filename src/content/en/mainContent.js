@@ -1,4 +1,4 @@
-export function mainContent(){
+export  function mainContent(){
 
     return {
         "welcome":
