@@ -51,8 +51,6 @@ export default function Home() {
       setFormData({...formData, returnFlight: selected})
       
     }
-  
-  console.log(formData)
 
     return (
         <main>
@@ -62,7 +60,7 @@ export default function Home() {
           onChange={handleRadio}
           id="oneWayFlight" value=""
           name="returnFlight"
-          className={`searchbar ${theme}`}
+          className={`${theme}`}
           type="radio"
           checked={selected}
           
@@ -72,34 +70,47 @@ export default function Home() {
           id="returnFlight"
           value="returnFlight"
           name="returnFlight"
-          className={`searchbar ${theme}`}
+          className={`${theme}`}
           type="radio" />
         
         <div className={`searchbar ${theme}`}>
           
-                <input
-                    onChange={handleFormDate}
-                    name="from"
-                    type="text" placeholder={content.from} />
-                <input
-                    onChange={handleFormDate}
-                    name="to"
-                    type="text" placeholder={content.to} />
-                <input
-                    onChange={handleFormDate}
-                    name="departDate"
-                    type="date" placeholder={content.depart} />
-                <input
-                    onChange={handleFormDate}
-                    name="returnDate"
-                    type="date" placeholder={content.return} />
-                <input
-                  onChange={handleFormDate}
-                  name="travellers"
-                  type="number" placeholder={content.travellers}
-                  value={1}
-                        
-                  />
+          <input
+            onChange={handleFormDate}
+            name="from"
+            type="text"
+            placeholder={content.from} />
+          <input
+            onChange={handleFormDate}
+            name="to"
+            type="text"
+            placeholder={content.to} />
+          <label htmlFor="departureDate">{content.departure} </label>
+          <input
+            id="departureDate"
+            onChange={handleFormDate}
+            name="departDate"
+            type="date"
+            />
+          
+          {!selected ? (
+            <>
+              <label htmlFor="returnDate">{content.returnDate} </label>
+            <input
+              onChange={handleFormDate}
+              id="returnDate"
+              name="returnDate"
+              type="date" placeholder={content.return} />
+              </>
+            ):""
+          }
+          
+          <input
+            onChange={handleFormDate}
+            name="travellers"
+            type="number" placeholder={`${content.travellers}: ${formData.travellers}`}
+                  
+            />
             </div>
             
             <FlightDetails {...formData}/>
