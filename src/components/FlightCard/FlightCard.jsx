@@ -7,12 +7,12 @@ export default function FlightCard({
   arrivalTime,
   departureTime,
   date,
+  numPerson,
 }) {
   const content = useContent();
   const { theme } = useTheme();
   return (
     <div className="flight__first flight" key={flight.id}>
-      {console.log(date)}
       <div className="flight__details">
         <div className="flight__details-date">
           {content.flightDate}
@@ -48,7 +48,7 @@ export default function FlightCard({
       <div className="flight__price">
         <div className="flight__price-total">
           {content.flightPrice}
-          {flight.price}
+          {numPerson * flight.price}
           {Object.keys(flight.conversion)}
         </div>
       </div>

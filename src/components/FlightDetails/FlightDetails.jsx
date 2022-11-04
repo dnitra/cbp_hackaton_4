@@ -12,12 +12,16 @@ export default function FlightDetails(props) {
   //props from home page
 
   let date = props.departDate.split("-");
-
   date = `${date[2]}/${date[1]}/${date[0]}`;
 
   const [cityCodeFrom, setCityCodeFrom] = useState([]);
   const [cityCodeTo, setCityCodeTo] = useState([]);
   const [flights, setFlights] = useState([]);
+  const [numPerson, setNumPerson] = useState(0);
+
+  useEffect(() => {
+    setNumPerson(props.travellers);
+  }, [props.travellers]);
 
   const loadCityCodeFrom = async () => {
     if (props.from) {
@@ -86,6 +90,7 @@ export default function FlightDetails(props) {
                   arrivalTime={arrivalTime}
                   departureTime={departureTime}
                   date={date}
+                  numPerson={numPerson}
                 />
               );
             })
