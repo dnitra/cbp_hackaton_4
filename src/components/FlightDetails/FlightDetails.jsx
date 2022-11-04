@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
-import "./FlightDetails.scss";
 import { DateTime } from "luxon";
+import FlightCard from "../FlightCard/FlightCard";
 
 export default function FlightDetails(props) {
   // props with flightDetails
@@ -10,12 +10,10 @@ export default function FlightDetails(props) {
   const { theme } = useTheme();
 
   //props from home page
-  console.log(props)
-  let date = props.departDate.split("-")
-  console.log(date)
-  date = `${date[2]}/${date[1]}/${date[0]}` 
-  console.log(date)
-  
+
+  let date = props.departDate.split("-");
+
+  date = `${date[2]}/${date[1]}/${date[0]}`;
 
   const [cityCodeFrom, setCityCodeFrom] = useState([]);
   const [cityCodeTo, setCityCodeTo] = useState([]);
@@ -27,7 +25,8 @@ export default function FlightDetails(props) {
     );
     const data = await response.json();
 
-    setCityCodeFrom(data.locations[0].code);
+    // console.log(data.locations[0].code);
+    if (data.locations[0]) setCityCodeFrom(data.locations[0].code);
   };
 
   const loadCityCodeTo = async () => {
@@ -35,8 +34,7 @@ export default function FlightDetails(props) {
       `https://api.skypicker.com/locations?term=${props.to}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
     );
     const data = await response.json();
-
-    setCityCodeTo(data.locations[0].code);
+    if (data.locations[0]) setCityCodeTo(data.locations[0].code);
   };
 
   const loadFlights = async () => {
@@ -44,7 +42,6 @@ export default function FlightDetails(props) {
       `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}`
     );
     const data = await response.json();
-    console.log(data);
 
     setFlights(data.data);
   };
@@ -57,76 +54,38 @@ export default function FlightDetails(props) {
     if (cityCodeFrom.length && cityCodeTo.length) {
       loadFlights();
     }
-  }
+  };
 
-  // return( 
-  //   <>
-  //   <div>
-  //     <button onClick={goLoadData}>Search</button>
-  //   </div>
-      
   return (
     <>
-    <div>
-       <button onClick={goLoadData}>Search</button>
-    </div>
-    
-    <div>
-      {flights ? flights.map((flight) => {
-          const departureTime = DateTime.fromMillis(flight.dTime * 1000).toFormat(
-            "hh:mm"
-          );
-          const arrivalTime = DateTime.fromMillis(flight.aTime * 1000).toFormat(
-            "hh:mm"
-          );
-          const date = DateTime.fromMillis(flight.dTime * 1000).toFormat("dd/MM");
-  
-          return (
-            <div className="flight__first flight" key={flight.id}>
-              <div className="flight__details">
-                <div className="flight__details-date">
-                  {content.flightDate}
-                  {date}
-                </div>
-                <div className="flight__details-airline">
-                  {content.flightAirline}
-                  {flight.airlines?.[0]} {flight.airlines?.[1]}
-                </div>
-                <div className="flight__details-from">
-                  {content.flightFrom}
-                  {flight.cityFrom}
-                </div>
-                <div className="flight__details-departure-time">
-                  {content.flightTimeDep}
-                  {departureTime}
-                </div>
-                <div className="flight__details-to">
-                  {content.flightTo}
-                  {flight.cityTo}
-                </div>
-                <div className="">
-                  {content.flightTimeArr}
-                  {arrivalTime}
-                </div>
-                <div className="flight__details-arrival-time"></div>
-                <div className="flight__details-time-total">
-                  {content.flightTimeTotal}
-                  {flight.fly_duration}
-                </div>
-              </div>
-  
-              <div className="flight__price">
-                <div className="flight__price-total">
-                  {content.flightPrice}
-                  {flight.price}
-                  {Object.keys(flight.conversion)}
-                </div>
-              </div>
-            </div>
-          );
-        })
-      : null}
-    </div>
+      <div>
+        <button onClick={goLoadData}>Search</button>
+      </div>
+
+      <div>
+        {flights
+          ? flights.map((flight) => {
+              const departureTime = DateTime.fromMillis(
+                flight.dTime * 1000
+              ).toFormat("hh:mm");
+              const arrivalTime = DateTime.fromMillis(
+                flight.aTime * 1000
+              ).toFormat("hh:mm");
+              const date = DateTime.fromMillis(flight.dTime * 1000).toFormat(
+                "dd/MM"
+              );
+
+              return (
+                <FlightCard
+                  flight={flight}
+                  arrivalTime={arrivalTime}
+                  departureTime={departureTime}
+                  date={date}
+                />
+              );
+            })
+          : null}
+      </div>
     </>
-    )
+  );
 }
