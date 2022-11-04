@@ -8,11 +8,13 @@ export function mainContent() {
     return: "return",
     travellers: "travellers",
     // Flight details
-    fligthDate: "Date of departure: ",
+    flightDate: "Date: ",
     flightFrom: "From: ",
     flightTo: "To: ",
     flightTimeTotal: "Flight time: ",
     flightAirline: "Airline: ",
+    flightTimeDep: "Departure time: ",
+    flightTimeArr: "Arrival time: ",
     // Flight price
     flightPrice: "Total price: ",
   };
