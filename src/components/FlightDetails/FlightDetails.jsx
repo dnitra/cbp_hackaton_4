@@ -13,12 +13,18 @@ export default function FlightDetails(props) {
 
   let date = props.departDate.split("-")
   date = `${date[2]}/${date[1]}/${date[0]}` 
-  console.log(date)
+  // console.log(date)
+
+  let returnDate = props.returnDate.split("-")
+  returnDate = `${returnDate[2]}/${returnDate[1]}/${returnDate[0]}` 
   
+  // console.log(returnDate)
 
   const [cityCodeFrom, setCityCodeFrom] = useState([]);
   const [cityCodeTo, setCityCodeTo] = useState([]);
   const [flights, setFlights] = useState([]);
+  const [returnFlights, setReturnFlights] = useState([]);
+
 
   const loadCityCodeFrom = async () => {
     if(props.from) {
@@ -46,13 +52,21 @@ export default function FlightDetails(props) {
 
   const loadFlights = async () => {
     const response = await fetch(
-      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=50&date_from=${date}&sort=date&asc=1`
+      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}&date_to=${date}&sort=date&asc=1`
     );
     const data = await response.json();
     // console.log(data);
 
     setFlights(data.data);
   };
+
+  const loadReturnFlights = async() => {
+  const response = await fetch(`https://api.skypicker.com/flights?fly_from=${cityCodeTo}&fly_to=${cityCodeFrom}&partner=data4youcbp202106&limit=10&date_from=${returnDate}&date_to=${returnDate}&sort=date&asc=1`)
+  const data = await response.json()
+  setReturnFlights(data.data)
+  }
+
+
   useEffect(() => {
     loadCityCodeFrom();
     loadCityCodeTo();
@@ -61,6 +75,7 @@ export default function FlightDetails(props) {
   const goLoadData = () => {
     if (cityCodeFrom.length && cityCodeTo.length) {
       loadFlights();
+      loadReturnFlights();
     }
   }
 
@@ -130,7 +145,10 @@ export default function FlightDetails(props) {
             </div>
           );
         })
-      : null}
+      : <div class="loading-container">
+                <div class="loading"></div>
+                <div id="loading-text">loading</div>
+           </div>}
     </div>
     </>
     )
