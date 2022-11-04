@@ -1,6 +1,7 @@
 export function mainContent() {
   return {
     welcome: "Let your journey begin",
+    searchButton: "SEARCH",
     search: "search",
     from: "from",
     to: "to",

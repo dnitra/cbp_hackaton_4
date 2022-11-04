@@ -11,7 +11,6 @@ import Header from "./components/Header/Header";
 
 function App() {
   const YOUR_AFFILD = "data4youcbp202106";
-
   return (
     <ContextsProvider>
       <>
