@@ -3,6 +3,7 @@ import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import { DateTime } from "luxon";
 import FlightCard from "../FlightCard/FlightCard";
+import { Link } from "react-router-dom";
 
 export default function FlightDetails(props) {
   // props with flightDetails
@@ -24,7 +25,7 @@ export default function FlightDetails(props) {
   const [cityCodeTo, setCityCodeTo] = useState([]);
   const [flights, setFlights] = useState([]);
   const [returnFlights, setReturnFlights] = useState([]);
-
+  const [flightId, setFlightId] = useState(null)
 
   const loadCityCodeFrom = async () => {
     if (props.from) {
@@ -54,7 +55,7 @@ export default function FlightDetails(props) {
       `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}&date_to=${date}&sort=date&asc=1`
     );
     const data = await response.json();
-
+      console.log(data.data)
     setFlights(data.data);
   };
 
@@ -76,7 +77,10 @@ export default function FlightDetails(props) {
       loadReturnFlights();
     }
   };
+  // if(flightId) {
+  //   return flightId
 
+  // }
   return (
     <>
       <div>
@@ -97,12 +101,13 @@ export default function FlightDetails(props) {
               );
 
               return (
-                <FlightCard
+              
+                  <FlightCard
                   flight={flight}
                   arrivalTime={arrivalTime}
                   departureTime={departureTime}
                   date={date}
-                />
+                  setFlightId={setFlightId}/>
               );
             })
           : null}

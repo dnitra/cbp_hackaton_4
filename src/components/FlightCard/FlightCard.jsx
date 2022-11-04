@@ -1,12 +1,14 @@
 import React from "react";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
+import { Link } from "react-router-dom";
 
 export default function FlightCard({
   flight,
   arrivalTime,
   departureTime,
   date,
+  setFlightId
 }) {
   const content = useContent();
   const { theme } = useTheme();
@@ -52,6 +54,10 @@ export default function FlightCard({
           {Object.keys(flight.conversion)}
         </div>
       </div>
+      <button onClick={() => {
+        setFlightId(flight.id)
+      }}>More details</button>
+      
     </div>
   );
 }

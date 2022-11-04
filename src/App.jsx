@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import FlightDetails from "./components/FlightDetails/FlightDetails";
+import DetailedFlight from "./components/FlightCard/DetailedFlight";
 
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
@@ -17,6 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/:cityFrom/:cityTo" element={<DetailedFlight/>} />
           {/* <Route path="/flights" element={<FlightDetails/>}/> */}
         </Routes>
       </>
