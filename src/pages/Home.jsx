@@ -1,5 +1,5 @@
 import { useContent } from "../contexts/ContentContext"
-export default function CountriesSelection() {
+export default function Home() {
    
     const content = useContent()
 
