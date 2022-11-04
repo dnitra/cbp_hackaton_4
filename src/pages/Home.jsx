@@ -4,5 +4,10 @@ export default function Home() {
   const content = useContent();
   const { theme } = useTheme();
 
-  return <main>{content.welcome}</main>;
+  return (
+    <main>
+      {content.welcome}
+      <div className={theme}>{content.search}</div>
+    </main>
+  );
 }
