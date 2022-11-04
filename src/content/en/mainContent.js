@@ -1,8 +1,24 @@
-export  function mainContent(){
+export function mainContent() {
+  return {
+    welcome: "Let your journey begin",
+    search: "search",
+    from: "from",
+    to: "to",
+    departure: "depart",
+    returnDate: "return",
+    travellers: "travellers",
+    // Flight details
+    flightDate: "Date: ",
+    flightFrom: "From: ",
+    flightTo: "To: ",
+    flightTimeTotal: "Flight time: ",
+    flightAirline: "Airline: ",
+    flightTimeDep: "Departure time: ",
+    flightTimeArr: "Arrival time: ",
+    // Flight price
+    flightPrice: "Total price: ",
 
-    return {
-        "welcome":
-            "Welcome to this awesome website!"
-
-    }
+    one_way_label: "one-way-flight",
+    return_flight_label: "return-flight",
+  };
 }
