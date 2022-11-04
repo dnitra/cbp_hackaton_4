@@ -25,7 +25,7 @@
     padding: 10px;
   }
   
-h1{
+  .auth-h1{
   text-transform: uppercase;
   font-family: "Raleway", sans-serif;
   font-size: 30px;
