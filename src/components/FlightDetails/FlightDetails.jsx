@@ -26,6 +26,7 @@ export default function FlightDetails(props) {
   const [flights, setFlights] = useState([]);
   const [returnFlights, setReturnFlights] = useState([]);
   const [flightId, setFlightId] = useState(null)
+  const [numPerson, setNumPerson] = useState(0);
 
   const loadCityCodeFrom = async () => {
     if (props.from) {
@@ -65,10 +66,15 @@ export default function FlightDetails(props) {
   setReturnFlights(data.data)
   }
 
+  const loadCarriers = async () => {
+    const response = await fetch();
+    const data = await response.json();
+  };
 
   useEffect(() => {
     loadCityCodeFrom();
     loadCityCodeTo();
+    setNumPerson(props.travellers);
   }, [props]);
 
   const goLoadData = () => {
@@ -107,7 +113,9 @@ export default function FlightDetails(props) {
                   arrivalTime={arrivalTime}
                   departureTime={departureTime}
                   date={date}
-                  setFlightId={setFlightId}/>
+                  setFlightId={setFlightId}
+                  numPerson={numPerson}
+                />
               );
             })
           : null}

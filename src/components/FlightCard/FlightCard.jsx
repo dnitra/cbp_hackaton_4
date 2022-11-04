@@ -8,22 +8,27 @@ export default function FlightCard({
   arrivalTime,
   departureTime,
   date,
-  setFlightId
+  setFlightId,
+  numPerson,
 }) {
   const content = useContent();
   const { theme } = useTheme();
   return (
     <div className="flight__first flight" key={flight.id}>
-      {console.log(date)}
       <div className="flight__details">
         <div className="flight__details-date">
           {content.flightDate}
           {date}
         </div>
-        <div className="flight__details-airline">
-          {content.flightAirline}
-          {flight.airlines?.[0]} {flight.airlines?.[1]}
-        </div>
+        {flight.airlines.map((airlineCode) => {
+          return (
+            <img
+              src={`https://images.kiwi.com/airlines/64/${airlineCode}.png`}
+              alt="airline logo"
+            />
+          );
+        })}
+
         <div className="flight__details-from">
           {content.flightFrom}
           {flight.cityFrom}
@@ -50,7 +55,7 @@ export default function FlightCard({
       <div className="flight__price">
         <div className="flight__price-total">
           {content.flightPrice}
-          {flight.price}
+          {numPerson * flight.price}
           {Object.keys(flight.conversion)}
         </div>
       </div>
