@@ -94,7 +94,7 @@ export default function FlightDetails(props) {
     <>
       <div>
         <button className="button-13" onClick={goLoadData}>
-          Search
+          {content.searchButton}
         </button>
       </div>
 

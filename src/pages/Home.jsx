@@ -45,7 +45,7 @@ export default function Home() {
     selected ? setSelected(false) : setSelected(true);
     setFormData({ ...formData, returnFlight: selected });
   };
-
+  
     return (
         <main>
         <h1>{content.welcome}</h1>
