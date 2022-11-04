@@ -32,25 +32,30 @@ export default function FlightDetails() {
 
   const loadFlights = async () => {
     const response = await fetch(
-      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10`
+      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=05/11/2022`
     );
     const data = await response.json();
     console.log(data);
-    setFlights(data);
+    setFlights(data.data);
   };
   useEffect(() => {
     loadCityCodeFrom();
     loadCityCodeTo();
   }, []);
 
-  useEffect(() => {
+  const goLoadData = () => {
     if (cityCodeFrom.length && cityCodeTo.length) {
       loadFlights();
     }
-  }, [cityCodeFrom, cityCodeTo]);
+  }
 
-  return flights
-    ? flights.map((flight) => {
+  return( 
+    <>
+    <div>
+      <button onClick={goLoadData}>Search</button>
+    </div>
+    <div>
+      {flights ? flights.map((flight) => {
         return (
           <div className="flight" key={flight.id}>
             <div className="flight__details">
@@ -87,5 +92,7 @@ export default function FlightDetails() {
           </div>
         );
       })
-    : null;
+    : null}
+    </div>
+    </>)
 }
