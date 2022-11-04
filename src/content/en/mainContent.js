@@ -7,5 +7,13 @@ export function mainContent() {
     departure: "depart",
     return: "return",
     travellers: "travellers",
+    // Flight details
+    fligthDate: "Date of departure: ",
+    flightFrom: "From: ",
+    flightTo: "To: ",
+    flightTimeTotal: "Flight time: ",
+    flightAirline: "Airline: ",
+    // Flight price
+    flightPrice: "Total price: ",
   };
 }

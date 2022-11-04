@@ -1,7 +1,7 @@
 import { useContent } from "../contexts/ContentContext"
 import { useTheme } from "../contexts/ThemeContext"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+
 import FlightDetails from "../components/FlightDetails/FlightDetails"
 
 export default function Home() {
@@ -61,4 +61,3 @@ export default function Home() {
         </main>
     )
 }
-

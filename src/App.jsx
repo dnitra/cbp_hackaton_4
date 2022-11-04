@@ -3,7 +3,6 @@ import { ContextsProvider } from "./contexts/ContextsProvider";
 import { Route, Routes } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";
 import SearchResults from "./pages/SearchResults/SearchResults";
-import PriceDetails from "./components/PriceDetails/PriceDetails";
 import FlightDetails from "./components/FlightDetails/FlightDetails";
 
 import Home from "./pages/Home";
@@ -18,6 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/flights" element={<FlightDetails/>}/>
         </Routes>
       </>
     </ContextsProvider>
