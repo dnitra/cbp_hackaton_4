@@ -15,6 +15,8 @@ export default function FlightCard({
   const content = useContent();
   const { theme } = useTheme();
   return (
+    <div className="allFlights">
+     
     <div className="flight__first flight" key={flight.id}>
       <div className="flight__details">
         <div className="flight__details-date">
@@ -68,6 +70,9 @@ export default function FlightCard({
       >
         More details
       </button>
+    </div>
+     <div className="flight__first flight">
+       </div>
     </div>
   );
 }
