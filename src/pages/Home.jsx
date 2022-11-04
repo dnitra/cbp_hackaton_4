@@ -1,12 +1,8 @@
-import { useContent } from "../contexts/ContentContext"
+import { useContent } from "../contexts/ContentContext";
+import { useTheme } from "../contexts/ThemeContext";
 export default function Home() {
-   
-    const content = useContent()
+  const content = useContent();
+  const { theme } = useTheme();
 
-    console.log(content)
-    return (
-        <main>
-            {content.welcome }
-        </main>
-    )
+  return <main>{content.welcome}</main>;
 }
