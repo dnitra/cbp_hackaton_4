@@ -1,235 +1,72 @@
 .flight {
+  // width: 70%;
+  // margin: 0 auto;
+  // background-color: orangered;
+  // margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-radius: 15px;
+  width: 30rem;
+  padding: 3rem;
+  text-align: left;
+  &__details {
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    justify-content: space-between;
+  }
+  & span {
+    font-weight: bold;
+  }
+  & img {
+    margin: 0.5rem;
+  }
+}
+.allFlights {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-between;
   width: 70%;
-  margin: 0 auto;
-  background-color: orangered;
-  margin-bottom: 2rem;
 }
 
-///loading
-///
-///
-#link {
-  color: #e45635;
-  display: block;
-  font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+.button-13 {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
   text-align: center;
   text-decoration: none;
-}
-#link:hover {
-  color: #cccccc;
-}
-
-#link,
-#link:hover {
-  -webkit-transition: color 0.5s ease-out;
-  -moz-transition: color 0.5s ease-out;
-  -ms-transition: color 0.5s ease-out;
-  -o-transition: color 0.5s ease-out;
-  transition: color 0.5s ease-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 150px;
+  height: 50px;
+  margin-left: 45%;
+  font-family: "Raleway", sans-serif;
 }
 
-/** BEGIN CSS **/
-@keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
+.button-13:hover {
+  background-color: #f7fafa;
 }
 
-@-moz-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@keyframes loading-text-opacity {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@-moz-keyframes loading-text-opacity {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes loading-text-opacity {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.loading-container,
-.loading {
-  height: 100px;
-  position: absolute;
-  top: 30%;
-  left: 42%;
-  width: 100px;
-  border-radius: 100%;
-}
-
-.loading-container {
-  margin: 40px auto;
-}
-
-.loading {
-  border: 2px solid transparent;
-  border-color: transparent black transparent black;
-  -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
-  -moz-transform-origin: 50% 50%;
-  -o-animation: rotate-loading 1.5s linear 0s infinite normal;
-  -o-transform-origin: 50% 50%;
-  -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
-  -webkit-transform-origin: 50% 50%;
-  animation: rotate-loading 1.5s linear 0s infinite normal;
-  transform-origin: 50% 50%;
-}
-
-.loading-container:hover .loading {
-  border-color: transparent #e45635 transparent #e45635;
-}
-.loading-container:hover .loading,
-.loading-container .loading {
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-
-#loading-text {
-  -moz-animation: loading-text-opacity 2s linear 0s infinite normal;
-  -o-animation: loading-text-opacity 2s linear 0s infinite normal;
-  -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
-  animation: loading-text-opacity 2s linear 0s infinite normal;
-  color: black;
-  font-family: "Helvetica Neue, " Helvetica ", " "arial";
-  font-size: 10px;
-  font-weight: bold;
-  margin-top: 45px;
-  opacity: 0;
-  position: absolute;
-  text-align: center;
-  text-transform: uppercase;
-  top: 30%;
-  left: 45%;
-  width: 100px;
+.button-13:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  outline: 0;
 }
