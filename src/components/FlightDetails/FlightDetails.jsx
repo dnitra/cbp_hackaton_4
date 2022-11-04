@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import "./FlightDetails.scss";
+import { DateTime } from "luxon";
 
 export default function FlightDetails() {
   // props with flightDetails
@@ -17,7 +18,7 @@ export default function FlightDetails() {
       `https://api.skypicker.com/locations?term=prague&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
     );
     const data = await response.json();
-    console.log(data.locations[0].code);
+
     setCityCodeFrom(data.locations[0].code);
   };
 
@@ -26,7 +27,7 @@ export default function FlightDetails() {
       `https://api.skypicker.com/locations?term=valencia&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
     );
     const data = await response.json();
-    console.log(data.locations[0].code);
+
     setCityCodeTo(data.locations[0].code);
   };
 
@@ -35,8 +36,8 @@ export default function FlightDetails() {
       `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10`
     );
     const data = await response.json();
-    console.log(data);
-    setFlights(data);
+
+    setFlights(data.data);
   };
   useEffect(() => {
     loadCityCodeFrom();
@@ -51,27 +52,43 @@ export default function FlightDetails() {
 
   return flights
     ? flights.map((flight) => {
+        const departureTime = DateTime.fromMillis(flight.dTime * 1000).toFormat(
+          "hh:mm"
+        );
+        const arrivalTime = DateTime.fromMillis(flight.aTime * 1000).toFormat(
+          "hh:mm"
+        );
+        const date = DateTime.fromMillis(flight.dTime * 1000).toFormat("dd/MM");
+
         return (
-          <div className="flight" key={flight.id}>
+          <div className="flight__first flight" key={flight.id}>
             <div className="flight__details">
-              <div className="flight__details-date">{content.flightDate}</div>
+              <div className="flight__details-date">
+                {content.flightDate}
+                {date}
+              </div>
               <div className="flight__details-airline">
                 {content.flightAirline}
-                {flight.airlines?.[0]}
+                {flight.airlines?.[0]} {flight.airlines?.[1]}
               </div>
               <div className="flight__details-from">
                 {content.flightFrom}
                 {flight.cityFrom}
               </div>
-              <div className="flight__details-airline">
-                {content.flightAirline}
-                {flight.airlines?.[1]}
+              <div className="flight__details-departure-time">
+                {content.flightTimeDep}
+                {departureTime}
               </div>
               <div className="flight__details-to">
                 {content.flightTo}
                 {flight.cityTo}
               </div>
-              <div className="flight__details-time">
+              <div className="">
+                {content.flightTimeArr}
+                {arrivalTime}
+              </div>
+              <div className="flight__details-arrival-time"></div>
+              <div className="flight__details-time-total">
                 {content.flightTimeTotal}
                 {flight.fly_duration}
               </div>
