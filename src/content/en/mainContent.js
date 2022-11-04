@@ -5,7 +5,7 @@ export function mainContent() {
     from: "from",
     to: "to",
     departure: "depart",
-    return: "return",
+    returnDate: "return",
     travellers: "travellers",
     // Flight details
     flightDate: "Date: ",

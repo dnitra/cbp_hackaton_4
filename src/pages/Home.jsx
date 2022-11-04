@@ -33,6 +33,11 @@ export default function Home() {
       inputValue = Math.max(min, Math.min(max, Number(e.target.value)));
     }
 
+    const handleRadio = (e) => {
+      selected ? setSelected(false) : setSelected(true);
+      setFormData({ ...formData, returnFlight: selected });
+    };
+
     setFormData(newFormData);
   };
 
@@ -77,24 +82,34 @@ export default function Home() {
           type="text"
           placeholder={content.to}
         />
+        <label htmlFor="departureDate">{content.departure} </label>
         <input
+          id="departureDate"
           onChange={handleFormDate}
           name="departDate"
           type="date"
-          placeholder={content.depart}
         />
-        <input
-          onChange={handleFormDate}
-          name="returnDate"
-          type="date"
-          placeholder={content.return}
-        />
+
+        {!selected ? (
+          <>
+            <label htmlFor="returnDate">{content.returnDate} </label>
+            <input
+              onChange={handleFormDate}
+              id="returnDate"
+              name="returnDate"
+              type="date"
+              placeholder={content.return}
+            />
+          </>
+        ) : (
+          ""
+        )}
+
         <input
           onChange={handleFormDate}
           name="travellers"
           type="number"
-          placeholder={content.travellers}
-          value={1}
+          placeholder={`${content.travellers}: ${formData.travellers}`}
         />
       </div>
 
