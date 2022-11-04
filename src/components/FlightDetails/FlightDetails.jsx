@@ -5,6 +5,7 @@ import { DateTime } from "luxon";
 import FlightCard from "../FlightCard/FlightCard";
 import FlightCardReturn from "../FlightCardReturn/FlightCardReturn";
 import { Link } from "react-router-dom";
+import "../FlightCard/FlightCard.scss"
 
 export default function FlightDetails(props) {
   // props with flightDetails
@@ -98,6 +99,7 @@ export default function FlightDetails(props) {
         </button>
       </div>
 
+      <div className="allFlights"> 
       <div>
         {flights
           ? flights.map((flight) => {
@@ -152,6 +154,7 @@ export default function FlightDetails(props) {
               );
             })
           : null}
+      </div>
       </div>
     </>
   );

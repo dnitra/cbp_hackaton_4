@@ -15,12 +15,13 @@ export default function FlightCard({
   const content = useContent();
   const { theme } = useTheme();
   return (
-    <div className="flight__first flight">
+    <div className="flight__first flight" key={flight.id}>
       <div className="flight__details">
         <div className="flight__details-date">
-          {content.flightDate}
+          <span>{content.flightDate}</span>
           {date}
         </div>
+        <div className="flight__details-img">
         {flight.airlines.map((airlineCode) => {
           return (
             <img
@@ -31,38 +32,38 @@ export default function FlightCard({
             />
           );
         })}
-
+          </div>
         <div className="flight__details-from">
-          {content.flightFrom}
+          <span>{content.flightFrom}</span>
           {flight.cityFrom}
         </div>
         <div className="flight__details-departure-time">
-          {content.flightTimeDep}
+          <span>{content.flightTimeDep}</span>
           {departureTime}
         </div>
         <div className="flight__details-to">
-          {content.flightTo}
+          <span>{content.flightTo}</span>
           {flight.cityTo}
         </div>
         <div className="">
-          {content.flightTimeArr}
+          <span>{content.flightTimeArr}</span>
           {arrivalTime}
         </div>
         <div className="flight__details-arrival-time"></div>
         <div className="flight__details-time-total">
-          {content.flightTimeTotal}
+          <span>{content.flightTimeTotal}</span>
           {flight.fly_duration}
         </div>
       </div>
 
       <div className="flight__price">
         <div className="flight__price-total">
-          {content.flightPrice}
+          <span>{content.flightPrice}</span>
           {numPerson * flight.price}
           {Object.keys(flight.conversion)}
         </div>
       </div>
-      <button
+      <button className="button-13"
         onClick={() => {
           setFlightId(flight.id);
         }}
