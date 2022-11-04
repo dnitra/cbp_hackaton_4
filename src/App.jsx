@@ -18,11 +18,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-<<<<<<< HEAD
           <Route path="/:cityFrom/:cityTo" element={<DetailedFlight/>} />
-          {/* <Route path="/flights" element={<FlightDetails/>}/> */}
-=======
->>>>>>> feat/kubar
+        
         </Routes>
       </>
     </ContextsProvider>
