@@ -1,25 +1,26 @@
+import "./App.scss";
+import { ContextsProvider } from "./contexts/ContextsProvider";
+import { Route, Routes } from "react-router-dom";
+import SearchBar from "./components/SearchBar/SearchBar";
+import SearchResults from "./pages/SearchResults/SearchResults";
+import PriceDetails from "./components/PriceDetails/PriceDetails";
+import FlightDetails from "./components/FlightDetails/FlightDetails";
 
-import './App.scss';
-import {ContextsProvider} from './contexts/ContextsProvider';
-import { Route, Routes } from 'react-router-dom';
-
-import Home from './pages/Home';
-import Header from './components/Header';
-
-
+import Home from "./pages/Home";
+import Header from "./components/Header/Header";
 
 function App() {
+  const YOUR_AFFILD = "data4youcbp202106";
 
   return (
-     <ContextsProvider>
-    <>
-      <Header />
-       <Routes>
-        <Route path="/" element={<Home />}/>
-      </Routes>
-      
+    <ContextsProvider>
+      <>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </>
-     </ContextsProvider>
+    </ContextsProvider>
   );
 }
 
