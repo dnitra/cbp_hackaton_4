@@ -26,7 +26,7 @@ export function ContextsProvider({ children }) {
             ...csContent
         }
     }
-    console.log(enContent)
+    
     const [lang,setLang] = useState("en")
     const [theme, setTheme] = useState("light-theme")
     const [content, setContent] = useState(allContents[lang])
