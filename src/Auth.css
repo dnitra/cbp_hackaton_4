@@ -1,18 +1,13 @@
-  body{
+  .auth{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
   }
-  input{
-    margin: 10px;
-    width: 80%;
-    
-    border-radius: 4px;
-  }
+
  
-  input {
+  .reg-input {
     width: 250px;
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     height: 50px;

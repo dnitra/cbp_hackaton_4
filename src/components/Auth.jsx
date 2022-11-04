@@ -31,9 +31,10 @@ export default function Auth() {
 
   return (
    
-        
+        <div className ="auth">
         <div className='form-container'>
-            <div className='header'><h1>{titles[page]}</h1></div>
+            <div className='header'>
+              <h1 className='auth-h1'>{titles[page]}</h1></div>
             <div className='body'>
                 {PageDisplay()}
             </div>
@@ -61,6 +62,8 @@ export default function Auth() {
             {page === titles.length - 1 ? "Submit" : "Next"}
           </button>
             </div>
+        </div>
+
         </div> 
     
   )
