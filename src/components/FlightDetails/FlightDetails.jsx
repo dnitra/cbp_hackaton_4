@@ -12,20 +12,20 @@ export default function FlightDetails(props) {
 
   //props from home page
 
-  let date = props.departDate.split("-")
-  date = `${date[2]}/${date[1]}/${date[0]}` 
+  let date = props.departDate.split("-");
+  date = `${date[2]}/${date[1]}/${date[0]}`;
   // console.log(date)
 
-  let returnDate = props.returnDate.split("-")
-  returnDate = `${returnDate[2]}/${returnDate[1]}/${returnDate[0]}` 
-  
+  let returnDate = props.returnDate.split("-");
+  returnDate = `${returnDate[2]}/${returnDate[1]}/${returnDate[0]}`;
+
   // console.log(returnDate)
 
   const [cityCodeFrom, setCityCodeFrom] = useState([]);
   const [cityCodeTo, setCityCodeTo] = useState([]);
   const [flights, setFlights] = useState([]);
   const [returnFlights, setReturnFlights] = useState([]);
-  const [flightId, setFlightId] = useState(null)
+  const [flightId, setFlightId] = useState(null);
   const [numPerson, setNumPerson] = useState(0);
 
   const loadCityCodeFrom = async () => {
@@ -56,15 +56,17 @@ export default function FlightDetails(props) {
       `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}&date_to=${date}&sort=date&asc=1`
     );
     const data = await response.json();
-      console.log(data.data)
+    console.log(data.data);
     setFlights(data.data);
   };
 
-  const loadReturnFlights = async() => {
-  const response = await fetch(`https://api.skypicker.com/flights?fly_from=${cityCodeTo}&fly_to=${cityCodeFrom}&partner=data4youcbp202106&limit=10&date_from=${returnDate}&date_to=${returnDate}&sort=date&asc=1`)
-  const data = await response.json()
-  setReturnFlights(data.data)
-  }
+  const loadReturnFlights = async () => {
+    const response = await fetch(
+      `https://api.skypicker.com/flights?fly_from=${cityCodeTo}&fly_to=${cityCodeFrom}&partner=data4youcbp202106&limit=10&date_from=${returnDate}&date_to=${returnDate}&sort=date&asc=1`
+    );
+    const data = await response.json();
+    setReturnFlights(data.data);
+  };
 
   const loadCarriers = async () => {
     const response = await fetch();
@@ -90,7 +92,9 @@ export default function FlightDetails(props) {
   return (
     <>
       <div>
-        <button className = "button-13" onClick={goLoadData}>Search</button>
+        <button className="button-13" onClick={goLoadData}>
+          Search
+        </button>
       </div>
 
       <div>
@@ -107,8 +111,7 @@ export default function FlightDetails(props) {
               );
 
               return (
-              
-                  <FlightCard
+                <FlightCard
                   flight={flight}
                   arrivalTime={arrivalTime}
                   departureTime={departureTime}
