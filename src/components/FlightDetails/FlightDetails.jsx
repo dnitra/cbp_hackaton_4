@@ -20,26 +20,31 @@ export default function FlightDetails(props) {
   const [flights, setFlights] = useState([]);
 
   const loadCityCodeFrom = async () => {
-    const response = await fetch(
-      `https://api.skypicker.com/locations?term=${props.from}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
-    );
-    const data = await response.json();
+    if (props.from) {
+      const response = await fetch(
+        `https://api.skypicker.com/locations?term=${props.from}&locale=en-US&location_types=airport&limit=50&active_only=true&sort=name`
+      );
+      const data = await response.json();
 
-    // console.log(data.locations[0].code);
-    if (data.locations[0]) setCityCodeFrom(data.locations[0].code);
+      // console.log(data.locations[0].code);
+      if (data.locations[0]) setCityCodeFrom(data.locations[0].code);
+    }
   };
 
   const loadCityCodeTo = async () => {
-    const response = await fetch(
-      `https://api.skypicker.com/locations?term=${props.to}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
-    );
-    const data = await response.json();
-    if (data.locations[0]) setCityCodeTo(data.locations[0].code);
+    if (props.to) {
+      const response = await fetch(
+        `https://api.skypicker.com/locations?term=${props.to}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
+      );
+      const data = await response.json();
+
+      setCityCodeTo(data.locations[0].code);
+    }
   };
 
   const loadFlights = async () => {
     const response = await fetch(
-      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}`
+      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=50&date_from=${date}&sort=date&asc=1`
     );
     const data = await response.json();
 

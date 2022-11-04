@@ -1,6 +1,7 @@
 import { useContent } from "../contexts/ContentContext"
 import { useTheme } from "../contexts/ThemeContext"
 import { useState, useEffect } from "react"
+import "./Home.scss"
 
 import FlightDetails from "../components/FlightDetails/FlightDetails"
 
