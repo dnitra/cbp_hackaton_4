@@ -2,7 +2,9 @@ export  function mainContent(){
 
     return {
         "welcome":
-            "Welcome to this awesome website!"
+            "Welcome to this awesome website!",
+        "search":
+            "search",
 
     }
 }
