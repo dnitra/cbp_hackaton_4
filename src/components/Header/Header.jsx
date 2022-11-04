@@ -27,8 +27,8 @@ export default function Header() {
                 onClick={handleLang}
                 name="lang"
                 id="lang">
-                <option> en</option>
                 <option> cs </option>
+                <option> en</option>
                 
             </select>
         </header>
