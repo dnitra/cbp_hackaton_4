@@ -18,10 +18,15 @@ export default function FlightCard({
           {content.flightDate}
           {date}
         </div>
-        <div className="flight__details-airline">
-          {content.flightAirline}
-          {flight.airlines?.[0]} {flight.airlines?.[1]}
-        </div>
+        {flight.airlines.map((airlineCode) => {
+          return (
+            <img
+              src={`https://images.kiwi.com/airlines/64/${airlineCode}.png`}
+              alt="airline logo"
+            />
+          );
+        })}
+
         <div className="flight__details-from">
           {content.flightFrom}
           {flight.cityFrom}
