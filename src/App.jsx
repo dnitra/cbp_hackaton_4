@@ -1,9 +1,11 @@
 
 import './App.scss';
 import {ContextsProvider} from './contexts/ContextsProvider';
-import { Route, Routes } from 'react-router-dom';
-import { DateTime } from 'luxon';
-DateTime.fromMillis(datetimeFromREST * 1000).toFormat('hh:mm')
+
+
+import Auth from "./components/Auth.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 
 import Home from './pages/Home';
@@ -16,10 +18,15 @@ function App() {
   return (
      <ContextsProvider>
     <>
+    <Auth />
+     
+    
       <Header />
        <Routes>
         <Route path="/" element={<Home />}/>
+        <Route path="/auth" element={<Auth />} />
       </Routes>
+      
       
       </>
      </ContextsProvider>
