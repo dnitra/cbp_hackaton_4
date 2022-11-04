@@ -55,7 +55,7 @@ export default function Home() {
     return (
         <main>
         <h1>{content.welcome}</h1>
-        <label htmlFor="oneWauFlight">one-way-flight</label>
+        <label htmlFor="oneWauFlight">{content.one_way_label}</label>
         <input
           onChange={handleRadio}
           id="oneWayFlight" value=""
@@ -65,7 +65,7 @@ export default function Home() {
           checked={selected}
           
         />
-        <label htmlFor="returnFlight">return-flight</label>
+        <label htmlFor="returnFlight">{content.return_flight_label}</label>
         <input onChange={handleRadio}
           id="returnFlight"
           value="returnFlight"

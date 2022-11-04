@@ -17,5 +17,8 @@ export function mainContent() {
     flightTimeArr: "Arrival time: ",
     // Flight price
     flightPrice: "Total price: ",
+
+    one_way_label: "one-way-flight",
+    return_flight_label: "return-flight",
   };
 }
