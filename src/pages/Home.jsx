@@ -45,64 +45,78 @@ export default function Home() {
     selected ? setSelected(false) : setSelected(true);
     setFormData({ ...formData, returnFlight: selected });
   };
-  
-    return (
-        <main>
-        <h1>{content.welcome}</h1>
-        <label htmlFor="oneWauFlight">{content.one_way_label}</label>
+
+  return (
+    <main>
+      <h1>{content.welcome}</h1>
+
+      <div className="radio-buttons">
+        <label htmlFor="oneWauFlight">One way</label>
         <input
           onChange={handleRadio}
-          id="oneWayFlight" value=""
+          id="oneWayFlight"
+          value=""
           name="returnFlight"
-          className={`${theme}`}
+          className={` ${theme}`}
           type="radio"
           checked={selected}
-          
         />
-        <label htmlFor="returnFlight">{content.return_flight_label}</label>
-        <input onChange={handleRadio}
+
+        <label htmlFor="returnFlight">Roundtrip</label>
+        <input
+          onChange={handleRadio}
           id="returnFlight"
           value="returnFlight"
           name="returnFlight"
-          className={`${theme}`}
-          type="radio" />
-        
-        <div className={`searchbar ${theme}`}>
-          
+          className={` ${theme}`}
+          type="radio"
+        />
+      </div>
+
+      <div className={`searchbar ${theme}`}>
+        <input
+          className="input-text"
+          onChange={handleFormDate}
+          name="from"
+          type="text"
+          placeholder={content.from}
+        />
+        <input
+          className="input-text"
+          onChange={handleFormDate}
+          name="to"
+          type="text"
+          placeholder={content.to}
+        />
+        <div className="input-label">
+          <label htmlFor="departureDate">{content.departure}</label>
           <input
-            onChange={handleFormDate}
-            name="from"
-            type="text"
-            placeholder={content.from} />
-          <input
-            onChange={handleFormDate}
-            name="to"
-            type="text"
-            placeholder={content.to} />
-          <label htmlFor="departureDate">{content.departure} </label>
-          <input
+            className="input-text"
             id="departureDate"
             onChange={handleFormDate}
             name="departDate"
             type="date"
-            />
-          
-          {!selected ? (
-            <>
-              <label htmlFor="returnDate">{content.returnDate} </label>
+          />
+        </div>
+
+        {!selected ? (
+          <div className="input-label">
+            <label htmlFor="returnDate">{content.returnDate} </label>
             <input
+              className="input-text"
               onChange={handleFormDate}
               id="returnDate"
               name="returnDate"
               type="date"
               placeholder={content.return}
             />
-          </>
+          </div>
         ) : (
           ""
         )}
 
         <input
+          className="input-text"
           onChange={handleFormDate}
           name="travellers"
           type="number"
