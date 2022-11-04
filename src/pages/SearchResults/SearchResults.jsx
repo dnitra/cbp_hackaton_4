@@ -1,5 +1,4 @@
 import React from "react";
-import FlightDetails from "../../components/FlightDetails/FlightDetails";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 

@@ -1,35 +1,35 @@
 import { useContent } from "../contexts/ContentContext"
 import { useTheme } from "../contexts/ThemeContext"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import FlightDetails from "../components/FlightDetails/FlightDetails"
 
+const keys = {
+    from:"",
+    to:"",
+    departDate:"",
+    returnDate:"",
+    travellers:"",
+}
 export default function Home() {
-   
+  
     const content = useContent()
     const { theme } = useTheme()
 
-    const keys = {
-        from:"",
-        to:"",
-        departDate:"",
-        returnDate:"",
-        travellers:"",
-    }
 
     const[formData,setFormData]=useState(keys)
     
     const handleFormDate = (e) => {
-
         const inputName = e.target.name
         const inputValue = e.target.value
-        formData[inputName] = inputValue
+        const newFormData = { ...formData }
+        newFormData[inputName] = inputValue
       
-        setFormData(formData)
+        setFormData(newFormData)
         
-        
-        console.log(formData)
     }
+
+   
 
     return (
         <main>

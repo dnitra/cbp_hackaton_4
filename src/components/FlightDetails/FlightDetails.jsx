@@ -3,10 +3,18 @@ import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import "./FlightDetails.scss";
 
-export default function FlightDetails() {
+export default function FlightDetails(props) {
   // props with flightDetails
   const content = useContent();
   const { theme } = useTheme();
+
+  //props from home page
+  console.log(props)
+  let date = props.departDate.split("-")
+  console.log(date)
+  date = `${date[2]}/${date[1]}/${date[0]}` 
+  console.log(date)
+  
 
   const [cityCodeFrom, setCityCodeFrom] = useState([]);
   const [cityCodeTo, setCityCodeTo] = useState([]);
@@ -14,7 +22,7 @@ export default function FlightDetails() {
 
   const loadCityCodeFrom = async () => {
     const response = await fetch(
-      `https://api.skypicker.com/locations?term=prague&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
+      `https://api.skypicker.com/locations?term=${props.from}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
     );
     const data = await response.json();
     console.log(data.locations[0].code);
@@ -23,7 +31,7 @@ export default function FlightDetails() {
 
   const loadCityCodeTo = async () => {
     const response = await fetch(
-      `https://api.skypicker.com/locations?term=valencia&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
+      `https://api.skypicker.com/locations?term=${props.to}&locale=en-US&location_types=airport&limit=10&active_only=true&sort=name`
     );
     const data = await response.json();
     console.log(data.locations[0].code);
@@ -32,7 +40,7 @@ export default function FlightDetails() {
 
   const loadFlights = async () => {
     const response = await fetch(
-      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=05/11/2022`
+      `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}`
     );
     const data = await response.json();
     console.log(data);
@@ -41,7 +49,7 @@ export default function FlightDetails() {
   useEffect(() => {
     loadCityCodeFrom();
     loadCityCodeTo();
-  }, []);
+  }, [props]);
 
   const goLoadData = () => {
     if (cityCodeFrom.length && cityCodeTo.length) {
