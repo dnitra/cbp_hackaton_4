@@ -15,7 +15,9 @@ export default function FlightCard({
   const content = useContent();
   const { theme } = useTheme();
   return (
-    <div className="flight__first flight">
+    <div
+      style={theme}
+      className="flight__first flight">
       <div className="flight__details">
         <div className="flight__details-date">
           <span>{content.flightDate}</span>

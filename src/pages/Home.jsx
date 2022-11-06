@@ -46,8 +46,9 @@ export default function Home() {
     setFormData({ ...formData, returnFlight: selected });
   };
 
+
   return (
-    <main>
+    <main style={theme}>
       <h1>{content.welcome}</h1>
 
       <div className="radio-buttons">

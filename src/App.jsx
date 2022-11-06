@@ -1,26 +1,36 @@
 import "./App.scss";
-import { ContextsProvider } from "./contexts/ContextsProvider";
+
 import { Route, Routes } from "react-router-dom";
-import SearchBar from "./components/SearchBar/SearchBar";
-import SearchResults from "./pages/SearchResults/SearchResults";
-import FlightDetails from "./components/FlightDetails/FlightDetails";
-import DetailedFlight from "./components/FlightCard/DetailedFlight";
+import { useTheme } from "./contexts/ThemeContext";
 import Auth from "./components/Auth";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
+import { useEffect } from "react";
 
 function App() {
-  const YOUR_AFFILD = "data4youcbp202106";
+
+  
+  const { theme } = useTheme()
+  
+  const bodyColor = document.body.style
+  
+  useEffect(() => {
+    
+    theme.name === "darkTheme" ? bodyColor.backgroundColor= "black":bodyColor.backgroundColor = "white"
+  },[theme])
+ 
+
+ 
+  
   return (
-    <ContextsProvider>
-      <>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-           <Route path="/register" element={<Auth/>} />
-        </Routes>
-      </>
-    </ContextsProvider>
+
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Auth/>} />
+      </Routes>
+    </>
   );
 }
 
