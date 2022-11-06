@@ -21,5 +21,8 @@ export function mainContent() {
 
     one_way_label: "one-way-flight",
     return_flight_label: "return-flight",
+    home: "Home",
+    register: "Register",
+    more_details: "More details",
   };
 }

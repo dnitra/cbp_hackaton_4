@@ -68,7 +68,7 @@ export default function FlightCard({
           setFlightId(flight.id);
         }}
       >
-        More details
+        {content.more_details}
       </button>
     </div>
   );

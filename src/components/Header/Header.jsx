@@ -1,36 +1,27 @@
 
-import { useEffect, useState } from "react"
+import "./Header.scss";
 import { Link } from "react-router-dom"
 import { useLang } from "../../contexts/LanguageContext"
-export default function Header() {
-  
-    const { changeLang, lang } = useLang()
-    
+import {useContent} from "../../contexts/ContentContext"
 
-    // const [jazyk,nastavJazyk]= useState("en")
+export default function Header() {
     
-    const handleLang = (e) => {
-        
-        changeLang(e.target.value)
-    }
+    const { changeLang } = useLang()
+    const content = useContent();
+
     
-    useEffect(() => {
-        changeLang(lang)
-    },[])
     return (
         <header>
             <nav>
-                <Link to="/">Home</Link>
-                <Link to="/register">Register</Link>
+                <Link to="/">{content.home}</Link>
+                <Link to="/register">{content.register}</Link>
             </nav>
 
             <select
-                onClick={handleLang}
-                name="lang"
-                id="lang">
-                <option> cs </option>
-                <option> en</option>
-                
+                onChange={changeLang}
+            >
+                <option value="en">EN</option>
+                <option value="cs">CZ</option>
             </select>
         </header>
     )

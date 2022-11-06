@@ -22,13 +22,14 @@ export function ContextsProvider({ children }) {
       ...csContent,
     },
   };
-  const [lang, setLang] = useState("en");
-  const [theme, setTheme] = useState("light-theme");
-  const [content, setContent] = useState(allContents[lang]);
 
-  const changeLang = (chosenLanguage) => {
-    setLang(chosenLanguage);
-    setContent(allContents[lang]);
+  const [theme, setTheme] = useState("light-theme");
+  const [content, setContent] = useState(allContents["en"]);
+
+  const changeLang = (lang) => {
+    console.log(lang.target.value)
+   
+    setContent(allContents[lang.target.value]);
   };
 
   const changeTheme = (chosenTheme) => {
@@ -37,7 +38,7 @@ export function ContextsProvider({ children }) {
 
   return (
     <ContentContext.Provider value={content}>
-      <LanguageContext.Provider value={{ lang, changeLang }}>
+      <LanguageContext.Provider value={{ changeLang }}>
         <ThemeContext.Provider value={{ theme, changeTheme }}>
           {children}
         </ThemeContext.Provider>

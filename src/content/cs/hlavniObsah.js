@@ -21,5 +21,8 @@ export function hlavniObsah() {
 
     one_way_label: "jednosměrný",
     return_flight_label: "zpáteční let",
+    home: "Domů",
+    register: "Registrovat se",
+    more_details: "Zobrazit více"
   };
 }

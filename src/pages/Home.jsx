@@ -51,7 +51,7 @@ export default function Home() {
       <h1>{content.welcome}</h1>
 
       <div className="radio-buttons">
-        <label htmlFor="oneWauFlight">One way</label>
+        <label htmlFor="oneWauFlight">{ content.one_way_label}</label>
         <input
           onChange={handleRadio}
           id="oneWayFlight"
@@ -62,7 +62,7 @@ export default function Home() {
           checked={selected}
         />
 
-        <label htmlFor="returnFlight">Roundtrip</label>
+        <label htmlFor="returnFlight">{content.return_flight_label}</label>
         <input
           onChange={handleRadio}
           id="returnFlight"
