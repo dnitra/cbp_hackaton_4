@@ -8,27 +8,22 @@ import Header from "./components/Header/Header";
 import { useEffect } from "react";
 
 function App() {
+  const { theme } = useTheme();
 
-  
-  const { theme } = useTheme()
-  
-  const bodyColor = document.body.style
-  
+  const bodyColor = document.body.style;
+
   useEffect(() => {
-    
-    theme.name === "darkTheme" ? bodyColor.backgroundColor= "black":bodyColor.backgroundColor = "white"
-  },[theme])
- 
+    theme.name === "darkTheme"
+      ? (bodyColor.backgroundColor = "black")
+      : (bodyColor.backgroundColor = "white");
+  }, [theme]);
 
- 
-  
   return (
-
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Auth/>} />
+        <Route path="/register" element={<Auth />} />
       </Routes>
     </>
   );
