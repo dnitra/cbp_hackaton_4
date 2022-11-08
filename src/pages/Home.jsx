@@ -5,6 +5,11 @@ import "./Home.scss";
 
 import FlightDetails from "../components/FlightDetails/FlightDetails";
 
+
+/**
+ * prepare the object containing all form input names
+ * use this object as the default value for useStateHook
+ */
 const keys = {
   from: "",
   to: "",
@@ -13,35 +18,51 @@ const keys = {
   travellers: 1,
   returnFlight: false,
 };
+
+
 export default function Home() {
+
+  /**
+   * deconstruct object values from context providers
+   * 
+   * content contains all content in chosen language
+   * theme contains styling
+   */
   const content = useContent();
   const { theme } = useTheme();
 
+  //use one state for all form data
   const [formData, setFormData] = useState(keys);
+
+  //useState for radiobutton
   const [selected, setSelected] = useState(true);
 
+
+  /**
+   * create one function to handle all inputs
+   */
   const handleFormDate = (e) => {
+    /** 
+     * take the name from event variable and use it as the key name from the 
+    * form data object 
+    */
+    
     const inputName = e.target.name;
     let inputValue = e.target.value;
+
+    //create new object and populate it with the formaData state
     const newFormData = { ...formData };
 
+    //change the newly created object key and value from the input name and value
     newFormData[inputName] = inputValue;
 
-    if (inputName === "travellers") {
-      const min = 1;
-      const max = 10;
-      inputValue = Math.max(min, Math.min(max, Number(e.target.value)));
-    }
-
-    const handleRadio = (e) => {
-      selected ? setSelected(false) : setSelected(true);
-      setFormData({ ...formData, returnFlight: selected });
-    };
-
+    //set the formData state to be equal to modifed object 
     setFormData(newFormData);
   };
 
-  const handleRadio = (e) => {
+
+  //switch between states of the radion buttons
+  const handleRadio = () => {
     selected ? setSelected(false) : setSelected(true);
     setFormData({ ...formData, returnFlight: selected });
   };

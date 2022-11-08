@@ -4,13 +4,20 @@ import { Link } from "react-router-dom"
 import { useLang } from "../../contexts/LanguageContext"
 import { useContent } from "../../contexts/ContentContext"
 import { useTheme } from "../../contexts/ThemeContext";
-import { useEffect } from "react";
+
 
 export default function Header() {
     
+
+    /**
+     * deconstruct the values provided by contexts providerds
+     */
+
+    //changeLang is a function to change between languages
     const { changeLang } = useLang()
     const content = useContent();
 
+    //changeTheme is a function to change between themes
     const { theme, changeTheme } = useTheme()
     
    
