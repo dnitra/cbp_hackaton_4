@@ -5,7 +5,6 @@ import "./Home.scss";
 
 import FlightDetails from "../components/FlightDetails/FlightDetails";
 
-
 /**
  * prepare the object containing all form input names
  * use this object as the default value for useStateHook
@@ -19,12 +18,10 @@ const keys = {
   returnFlight: false,
 };
 
-
 export default function Home() {
-
   /**
    * deconstruct object values from context providers
-   * 
+   *
    * content contains all content in chosen language
    * theme contains styling
    */
@@ -37,16 +34,15 @@ export default function Home() {
   //useState for radiobutton
   const [selected, setSelected] = useState(true);
 
-
   /**
    * create one function to handle all inputs
    */
   const handleFormDate = (e) => {
-    /** 
-     * take the name from event variable and use it as the key name from the 
-    * form data object 
-    */
-    
+    /**
+     * take the name from event variable and use it as the key name from the
+     * form data object
+     */
+
     const inputName = e.target.name;
     let inputValue = e.target.value;
 
@@ -56,10 +52,9 @@ export default function Home() {
     //change the newly created object key and value from the input name and value
     newFormData[inputName] = inputValue;
 
-    //set the formData state to be equal to modifed object 
+    //set the formData state to be equal to modifed object
     setFormData(newFormData);
   };
-
 
   //switch between states of the radion buttons
   const handleRadio = () => {
@@ -67,13 +62,12 @@ export default function Home() {
     setFormData({ ...formData, returnFlight: selected });
   };
 
-
   return (
     <main style={theme}>
       <h1>{content.welcome}</h1>
 
       <div className="radio-buttons">
-        <label htmlFor="oneWauFlight">{ content.one_way_label}</label>
+        <label htmlFor="oneWauFlight">{content.one_way_label}</label>
         <input
           onChange={handleRadio}
           id="oneWayFlight"
