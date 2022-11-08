@@ -33,10 +33,10 @@ export default function Home() {
       inputValue = Math.max(min, Math.min(max, Number(e.target.value)));
     }
 
-    const handleRadio = (e) => {
-      selected ? setSelected(false) : setSelected(true);
-      setFormData({ ...formData, returnFlight: selected });
-    };
+    // const handleRadio = (e) => {
+    //   selected ? setSelected(false) : setSelected(true);
+    //   setFormData({ ...formData, returnFlight: selected });
+    // };
 
     setFormData(newFormData);
   };
@@ -51,7 +51,7 @@ export default function Home() {
       <h1>{content.welcome}</h1>
 
       <div className="radio-buttons">
-        <label htmlFor="oneWauFlight">{ content.one_way_label}</label>
+        <label htmlFor="oneWauFlight">{content.one_way_label}</label>
         <input
           onChange={handleRadio}
           id="oneWayFlight"

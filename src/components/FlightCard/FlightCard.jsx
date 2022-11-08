@@ -1,10 +1,11 @@
 import React from "react";
 import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./FlightCard.scss";
 
 export default function FlightCard({
+  // grabing the props passed from the FlightDetails
   flight,
   arrivalTime,
   departureTime,
@@ -12,6 +13,7 @@ export default function FlightCard({
   setFlightId,
   numPerson,
 }) {
+  //
   const content = useContent();
   const { theme } = useTheme();
   return (
@@ -22,17 +24,18 @@ export default function FlightCard({
           {date}
         </div>
         <div className="flight__details-img">
-        {flight.airlines.map((airlineCode) => {
-          return (
-            <img
-              key={airlineCode}
-              className="flight__details-logo"
-              src={`https://images.kiwi.com/airlines/64/${airlineCode}.png`}
-              alt="airline logo"
-            />
-          );
-        })}
-          </div>
+          {/* Mapping through the airlines to get all the logos */}
+          {flight.airlines.map((airlineCode) => {
+            return (
+              <img
+                key={airlineCode}
+                className="flight__details-logo"
+                src={`https://images.kiwi.com/airlines/64/${airlineCode}.png`}
+                alt="airline logo"
+              />
+            );
+          })}
+        </div>
         <div className="flight__details-from">
           <span>{content.flightFrom}</span>
           {flight.cityFrom}
@@ -45,11 +48,11 @@ export default function FlightCard({
           <span>{content.flightTo}</span>
           {flight.cityTo}
         </div>
-        <div className="">
+        <div className="flight__details-arrival-time">
           <span>{content.flightTimeArr}</span>
           {arrivalTime}
         </div>
-        <div className="flight__details-arrival-time"></div>
+
         <div className="flight__details-time-total">
           <span>{content.flightTimeTotal}</span>
           {flight.fly_duration}
@@ -63,7 +66,8 @@ export default function FlightCard({
           {Object.keys(flight.conversion)}
         </div>
       </div>
-      <button className="button-13"
+      <button
+        className="button-13"
         onClick={() => {
           setFlightId(flight.id);
         }}
