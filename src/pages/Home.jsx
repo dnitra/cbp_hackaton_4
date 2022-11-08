@@ -67,7 +67,7 @@ export default function Home() {
       <h1>{content.welcome}</h1>
 
       <div className="radio-buttons">
-        <label htmlFor="oneWauFlight">{content.one_way_label}</label>
+        <label htmlFor="oneWayFlight">{content.one_way_label}</label>
         <input
           onChange={handleRadio}
           id="oneWayFlight"

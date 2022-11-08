@@ -1,7 +1,4 @@
-
-
 import { createContext, useContext } from "react";
-import { useEffect } from "react";
 
 //create content context 
 export const ContentContext = createContext();
