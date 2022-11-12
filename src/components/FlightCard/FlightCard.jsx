@@ -17,9 +17,7 @@ export default function FlightCard({
   const content = useContent();
   const { theme } = useTheme();
   return (
-    <div
-      style={theme}
-      className="flight__first flight" key={flight.id}>
+    <div style={theme} className="flight__first flight" key={flight.id}>
       <div className="flight__details">
         <div className="flight__details-date">
           <span>{content.flightDate}</span>
@@ -58,6 +56,7 @@ export default function FlightCard({
         <div className="flight__details-time-total">
           <span>{content.flightTimeTotal}</span>
           {flight.fly_duration}
+          {console.log(flight)}
         </div>
       </div>
 

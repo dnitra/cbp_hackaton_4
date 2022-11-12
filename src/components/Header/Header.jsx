@@ -26,6 +26,7 @@ export default function Header() {
           {content.register}
         </Link>
       </nav>
+
       <div style={theme} className="settings">
         <select style={theme} onChange={changeLang}>
           <option value="en">EN</option>

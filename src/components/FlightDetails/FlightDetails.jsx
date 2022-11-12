@@ -3,8 +3,6 @@ import { useContent } from "../../contexts/ContentContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import { DateTime } from "luxon";
 import FlightCard from "../FlightCard/FlightCard";
-import FlightCardReturn from "../FlightCardReturn/FlightCardReturn";
-import { Link } from "react-router-dom";
 import "../FlightCard/FlightCard.scss";
 
 export default function FlightDetails(props) {
@@ -58,7 +56,6 @@ export default function FlightDetails(props) {
       `https://api.skypicker.com/flights?fly_from=${cityCodeFrom}&fly_to=${cityCodeTo}&partner=data4youcbp202106&limit=10&date_from=${date}&date_to=${date}&sort=date&asc=1`
     );
     const data = await response.json();
-    console.log(data.data);
     // save data into state
     setFlights(data.data);
   };
@@ -140,7 +137,7 @@ export default function FlightDetails(props) {
                 ).toFormat("dd/MM");
 
                 return (
-                  <FlightCardReturn
+                  <FlightCard
                     flight={returnFlight}
                     arrivalTime={arrivalTimeReturn}
                     departureTime={departureTimeReturn}
